@@ -19,55 +19,48 @@
 }
 
 
-select{
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
   appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 0 !important;
+  outline: none;
+  border: none;
   background: #27272a;
-  background-image: none;
-  flex: 1;
-  padding: 0.05em;
   color: #fff;
-  cursor: pointer;
   font-size: 1em;
   font-family: sans-serif;
-
+  width: 100%;
+  height: 100%;
+  padding: 0 1em;
+  cursor: pointer;
 }
 
-select::-ms-expand{
+select::-ms-expand {
   display: none;
 }
-.select{
+
+.select {
   position: relative;
   display: flex;
   width: 20em;
   height: 3em;
   line-height: 3em;
   background: #27272a;
-  overflow: hidden;
   border-radius: 0.25em;
-  padding: 0.05em;
- 
-
+  overflow: hidden;
 }
-.select::after{
+
+.select::after {
   content: "▼";
   position: absolute;
   top: 0;
   right: 0;
   padding: 0 1em;
   background: #27272a;
-  cursor: pointer;
   pointer-events: none;
   transition: 0.25s all ease;
-
-
 }
-.select:hover::after{
-  color: #6556cd;
 
+.select:hover::after {
+  color: #6556cd;
 }
