@@ -10,6 +10,7 @@ const Home = () => {
     document.title = "CINEO | HOMEPAGE";
 
     const [wallpaper, setwallpaper] = useState(null);
+    const [trending, setTrending] = useState(null);
 
     const getHeaderWallpaper = async () => {
         try {
@@ -22,18 +23,34 @@ const Home = () => {
         }
     }
 
+
+
+    const getTrending = async () => {
+        try {
+            const { data } = await axios.get(`/trending/all/day`);
+            setTrending(data.results)
+        } catch (error) {
+            console.log("Error", error);
+        }
+    }
+
     useEffect(() => {
         !wallpaper && getHeaderWallpaper()
+        !trending && getTrending()
     }, [])
 
-    return wallpaper ? (
+
+    console.log(trending)
+
+
+    return wallpaper && trending ? (
 
         <>
             <Sidenav />
-            <div className='w-[80%] h-full '>
+            <div className='w-[80%] h-full overflow-auto overflow-x-hidden '>
                 <Topnav />
                 <Header data={wallpaper} />
-                <HorizantalCard/>
+                <HorizantalCard data={trending} />
             </div>
         </>
     ) : <h1>Loading</h1>
