@@ -40,7 +40,7 @@ const Topnav = () => {
                 ></i>
             )}
 
-            <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[90%] overflow-auto rounded-lg">
+            <div className="absolute w-[50%] max-h-[50vh] bg-zinc-200 top-[100%] left-[5%] overflow-auto rounded-lg">
                 {searches.map((s, i) => (
                     <Link
                         key={i}
@@ -50,9 +50,7 @@ const Topnav = () => {
                             src={
                                 s.backdrop_path || s.profile_path ?
                                     `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path
-                                    }`:noimage} alt="" />
-
-
+                                    }` : noimage} alt="" />
                         <span>
                             {s.name || s.title || s.original_name || s.original_title}
                         </span>
