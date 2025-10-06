@@ -4,6 +4,7 @@ import Topnav from '../partials/Topnav';
 import axios from "../utils/Axios";
 import Header from '../partials/Header';
 import HorizantalCard from '../partials/HorizantalCard';
+import Dropdown from '../partials/Dropdown';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
 
     const [wallpaper, setwallpaper] = useState(null);
     const [trending, setTrending] = useState(null);
+    const [category, setCategory] = useState("all");
 
     const getHeaderWallpaper = async () => {
         try {
@@ -27,7 +29,7 @@ const Home = () => {
 
     const getTrending = async () => {
         try {
-            const { data } = await axios.get(`/trending/all/day`);
+            const { data } = await axios.get(`/trending/${category}/day`);
             setTrending(data.results)
         } catch (error) {
             console.log("Error", error);
@@ -36,8 +38,9 @@ const Home = () => {
 
     useEffect(() => {
         !wallpaper && getHeaderWallpaper()
-        !trending && getTrending()
-    }, [])
+        getTrending()
+
+    }, [category])
 
 
     console.log(trending)
@@ -50,6 +53,10 @@ const Home = () => {
             <div className='w-[80%] h-full overflow-auto overflow-x-hidden '>
                 <Topnav />
                 <Header data={wallpaper} />
+                <div className='p-3 flex justify-between'>
+                    <h1 className=' text-3xl  text-zinc-400 font-semibold '>Trending</h1>
+                <Dropdown title="filter" options={["tv", "movie", "all"]} func={(e)=>setCategory(e.target.value)}/>
+                </div>
                 <HorizantalCard data={trending} />
             </div>
         </>

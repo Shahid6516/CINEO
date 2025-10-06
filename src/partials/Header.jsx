@@ -20,8 +20,8 @@ const Header = ({ data }) => {
             <p className="w-[70%] text-white mt-3 ">{data.overview.slice(0, 200)} ...<Link className="text-blue-700">more</Link> </p>
 
             <p className="text-white flex gap-2">
-                <i class="text-yellow-500 ri-megaphone-fill"></i>{data.release_date || "no information"}
-                <i class="text-yellow-500 ri-album-fill"></i>{data.media_type.toUpperCase()}
+                <i className="text-yellow-500 ri-megaphone-fill"></i>{data.release_date || "no information"}
+                <i className="text-yellow-500 ri-album-fill"></i>{data.media_type.toUpperCase()}
             </p>
             <Link className="bg-[#6556cd] p-3 mt-3 rounded text-white font-semibold">Watch trailer
             </Link>
