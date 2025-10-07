@@ -15,7 +15,7 @@ const HorizantalCard = ({ data }) => {
                     <div className='text-white p-2 h-[45%]'>
                         <h1 className=" text-md font-semibold text-white">{d.name || d.title.slice(0, 15) || d.original_name.slice(0, 2) || d.original_title.slice(0, 2)}</h1>
 
-                        <p className=" w-[100%] mt-1 font-light text-white text-sm ">{d.overview.slice(0, 30)} ...<Link className="text-blue-700">more</Link> </p>
+                        <p className=" w-[100%] mt-1 font-light text-white text-sm ">{d.overview.slice(0, 70)} ...<Link className="text-blue-700">more</Link> </p>
                     </div>
                 </div>
             ))}

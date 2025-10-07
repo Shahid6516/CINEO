@@ -5,6 +5,7 @@ import axios from "../utils/Axios";
 import Header from '../partials/Header';
 import HorizantalCard from '../partials/HorizantalCard';
 import Dropdown from '../partials/Dropdown';
+import Loading from './Loading';
 
 
 const Home = () => {
@@ -60,7 +61,7 @@ const Home = () => {
                 <HorizantalCard data={trending} />
             </div>
         </>
-    ) : <h1>Loading</h1>
+    ) : <Loading/>
 }
 
 export default Home
