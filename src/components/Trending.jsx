@@ -8,6 +8,8 @@ import Loading from './Loading'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const Trending = () => {
+    document.title = "CINEO | TRENDING";
+
   const navigate = useNavigate() 
 
   const [category, setCategory] = useState("all")
@@ -69,7 +71,7 @@ const Trending = () => {
   return (
     <div className='p-6 w-screen'>
       <div className='w-full flex items-center justify-between mb-4'>
-        <h1 className='text-2xl text-zinc-400 font-semibold'>
+        <h1 className='flex gap-2 text-2xl text-zinc-400 font-semibold'>
           <i
             onClick={() => navigate(-1)}
             className="hover:text-[#6556cd] ri-arrow-left-line"

@@ -14,11 +14,11 @@ const Sidenav = () => {
         </h1>
         <Link to="/trending" className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-fire-fill"></i>Trending </Link>
 
-        <Link className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-bard-fill mr-2"></i>Popular</Link>
+        <Link to="/popular" className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-bard-fill mr-2"></i>Popular</Link>
 
-        <Link className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-movie-2-fill mr-2"></i>Movies</Link>
+        <Link to="/movies" className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-movie-2-fill mr-2"></i>Movies</Link>
 
-        <Link className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-tv-fill mr-2"></i>Tv Shows</Link>
+        <Link to="tv" className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-tv-fill mr-2"></i>Tv Shows</Link>
 
         <Link className='hover:bg-[#6556cd] p-2 rounded-lg hover:text-white duration-300'><i className="ri-team-fill mr-2"></i>People</Link>
       </nav>
