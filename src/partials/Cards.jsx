@@ -1,11 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
-
-
-
-
 const Cards = ({ data, title }) => {
     return (
         <div className='flex flex-wrap w-full h-full  items-center justify-center'>
