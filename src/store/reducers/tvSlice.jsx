@@ -5,21 +5,21 @@ const initialState = {
 }
 
 
-export const movieSlice = createSlice({
-    name: 'movie',
+export const tvSlice = createSlice({
+    name: 'tv',
     initialState,
     reducers: {
-        loadmovie: (state, action) => {
+        loadtv: (state, action) => {
             state.info = action.payload;
         },
-        removemovie: (state, action) => {
+        removetv: (state, action) => {
             state.info = null;
         },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { loadmovie, removemovie } = movieSlice.actions;
+export const { loadtv, removetv } = tvSlice.actions;
 
-export default movieSlice.reducer
+export default tvSlice.reducer
 
