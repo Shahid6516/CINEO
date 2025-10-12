@@ -7,7 +7,6 @@ const Topnav = () => {
     const [query, setQuery] = useState("");
     const [searches, setsearches] = useState([]);
 
-    console.log(query);
 
     const getSearch = async () => {
         try {
