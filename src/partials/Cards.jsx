@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import noimage from "../../public/no-image.avif"
 
 const Cards = ({ data, type }) => {
   return (
@@ -19,10 +20,17 @@ const Cards = ({ data, type }) => {
           className='relative w-[30vh] mr-[3%] mb-[2%]'
         >
           <img
-            className='h-[40vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]'
-            src={`https://image.tmdb.org/t/p/original/${item.poster_path || item.backdrop_path || item.profile_path}`}
-            alt=""
+            className="h-[40vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)]"
+            src={
+              item.poster_path || item.backdrop_path || item.profile_path
+                ? `https://image.tmdb.org/t/p/original/${item.poster_path || item.backdrop_path || item.profile_path
+                }`
+                : noimage
+            }
+            alt={item.title || item.name || "No image available"}
+            loading="lazy"
           />
+
           <h1 className='text-lg text-zinc-300 mt-3 font-semibold'>
             {(item.name || item.title || item.original_name || item.original_title)?.slice(0, 15)}
           </h1>

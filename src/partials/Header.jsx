@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 
 const Header = ({ data }) => {
-    if (!data) return null; // safeguard
+    if (!data) return null; 
+    const video = data?.videos;
+  const youtubeUrl = `https://www.youtube.com/watch?v=${video}`;
+
+
+    const handleOpenTrailer = () => {
+    window.open(youtubeUrl, "_blank");
+  };
 
     const imageUrl = `https://image.tmdb.org/t/p/original/${data.backdrop_path || data.profile_path}`;
 
@@ -23,7 +30,7 @@ const Header = ({ data }) => {
                 <i className="text-yellow-500 ri-megaphone-fill"></i>{data.release_date || "no information"}
                 <i className="text-yellow-500 ri-album-fill"></i>{data.media_type.toUpperCase()}
             </p>
-            <Link className="bg-[#6556cd] p-3 mt-3 rounded text-white font-semibold">Watch trailer
+            <Link onClick={handleOpenTrailer} className="bg-[#6556cd] p-3 mt-3 rounded text-white font-semibold">Watch trailer
             </Link>
 
 
