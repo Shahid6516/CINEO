@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncloadmovie } from "../store/actions/moiveActions";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { removemovie } from "../store/reducers/movieSlice";
 import Loading from "../components/Loading";
 import HorizantalCard from "../partials/HorizantalCard"
@@ -38,7 +38,7 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-[100%] h-[140vh] px-[10%]"
+      className="relative w-[100%] h-[140vh] px-[10%]"
     >
       {/* Part 1 navigation */}
 
@@ -91,11 +91,12 @@ const MovieDetails = () => {
               ( {info.detail.release_date.split("-")[0]})
             </span>
           </h1>
-          <div className="flex mt-2 text-white items-center gap-5">
+          <div className="flex mt-2 text-white items-center gap-5 relative">
             <span className="absolute text-white text-md font-semibold rounded-full w-[5vh] h-[5vh] flex items-center justify-center bg-yellow-600 ">
               {Math.floor(info.detail.vote_average * 10)}
               <sup>%</sup>
             </span>
+
             <h1 className="ml-10 font-semibold text-2xl w-[60px] leading-5 ">
               User Score
             </h1>
@@ -126,7 +127,7 @@ const MovieDetails = () => {
 
       {/* Part 3 availble on platform */}
 
-      <div className="w-80% ">
+      <div className="w-80% mb-10">
         {info.watchproviders && info.watchproviders.flatrate && (
           <div className="flex gap-3 items-center text-white">
             <h1>Available on platforms</h1>
@@ -143,7 +144,7 @@ const MovieDetails = () => {
         )}
 
         {info.watchproviders && info.watchproviders.rent && (
-          <div className="flex gap-3 items-center text-white">
+          <div className="flex gap-3 mt-3 items-center text-white">
             <h1>Available on rent</h1>
             {info.watchproviders.rent.map((w) => (
               <img
@@ -171,17 +172,19 @@ const MovieDetails = () => {
 
 
       {/*Part 4 Recommendation and similar stuff */}
-        <HorizantalCard
-          data={
-            info?.recommendations?.length > 0
-              ? info.recommendations
-              : info?.similar
-          }
+      <hr className="border-none h-[2px] bg-zinc-500" />
+      <h1 className="text-2xl mt-3 font-bold text-white">Recommendations & Similar</h1>
+      <HorizantalCard
+        data={
+          info?.recommendations?.length > 0
+            ? info.recommendations
+            : info?.similar
+        }
 
-        />
+      />
 
 
-
+      <Outlet />
 
     </div>
   );
