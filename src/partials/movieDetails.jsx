@@ -4,6 +4,7 @@ import { asyncloadmovie } from "../store/actions/moiveActions";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { removemovie } from "../store/reducers/movieSlice";
 import Loading from "../components/Loading";
+import HorizantalCard from "../partials/HorizantalCard"
 
 const MovieDetails = () => {
   const { pathname } = useLocation()
@@ -37,7 +38,7 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-[100%] h-screen px-[10%]"
+      className="w-[100%] h-[140vh] px-[10%]"
     >
       {/* Part 1 navigation */}
 
@@ -167,6 +168,20 @@ const MovieDetails = () => {
           </div>
         )}
       </div>
+
+
+      {/*Part 4 Recommendation and similar stuff */}
+        <HorizantalCard
+          data={
+            info?.recommendations?.length > 0
+              ? info.recommendations
+              : info?.similar
+          }
+
+        />
+
+
+
 
     </div>
   );

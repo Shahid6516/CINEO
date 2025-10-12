@@ -1,29 +1,41 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Dropdown from './Dropdown'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const HorizantalCard = ({ data }) => {
-    return (
+  return (
+    <div className="w-full flex overflow-x-auto p-3 gap-5">
+      {data?.map((d, i) => (
+        <div
+          key={i}
+          className="min-w-[15%] h-[40vh] bg-zinc-900 rounded-lg overflow-hidden shadow-md hover:scale-[1.03] transition-transform duration-300"
+        >
+          <Link to={`/movies/details/${d.id}`}>
+            <img
+              className="w-full h-[45%] object-cover bg-center"
+              src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}`}
+              alt={d.title || d.name}
+            />
+          </Link>
 
-        <div className='w-[100%] flex overflow-x-auto overflow p-3 '>
-            {data.map((d, i) => (
+          <div className="text-white p-2 h-[45%]">
+            <h1 className="text-md font-semibold">
+              {d.name || d.title || d.original_name || d.original_title}
+            </h1>
 
-                <div key={i} className='min-w-[15%]  mr-5 bg-zinc-900 overflow-y-hidden rounded'>
-
-                    <img className='w-full h-[45%] mb-3 object-cover bg-center ' src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}`} alt="" />
-
-                    <div className='text-white p-2 h-[45%]'>
-                        <h1 className=" text-md font-semibold text-white">{d.name || d.title.slice(0, 15) || d.original_name.slice(0, 2) || d.original_title.slice(0, 2)}</h1>
-
-                        <p className=" w-[100%] mt-1 font-light text-white text-sm ">{d.overview.slice(0, 70)} ...<Link className="text-blue-700">more</Link> </p>
-                    </div>
-                </div>
-            ))}
+            <p className="mt-1 font-light text-sm">
+              {d.overview?.slice(0, 70)}...{" "}
+              <Link
+                to={`/movies/details/${d.id}`}
+                className="text-blue-400 hover:text-blue-500"
+              >
+                more
+              </Link>
+            </p>
+          </div>
         </div>
+      ))}
+    </div>
+  );
+};
 
-
-
-    )
-}
-
-export default HorizantalCard
+export default HorizantalCard;

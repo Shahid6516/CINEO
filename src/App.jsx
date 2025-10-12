@@ -8,6 +8,7 @@ import TvShows from './components/TvShows';
 import People from './components/People';
 import TvDetails from './components/tvDetails';
 import PersonDetails from './components/personDetails';
+// import MovieDetails from './partials/movieDetails';
 import MovieDetails from './partials/movieDetails';
 
 const App = () => {
