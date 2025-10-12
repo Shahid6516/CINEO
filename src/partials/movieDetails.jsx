@@ -29,6 +29,13 @@ const MovieDetails = () => {
   if (!info || !info.detail) {
     return <Loading />;
   }
+  const video = info?.videos;
+
+  const youtubeUrl = `https://www.youtube.com/watch?v=${video.key}`;
+
+  const handleOpenTrailer = () => {
+    window.open(youtubeUrl, "_blank");
+  };
 
   return (
     <div
@@ -38,7 +45,7 @@ const MovieDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="relative w-[100%] h-[140vh] px-[10%]"
+      className="relative w-[100%] h-fit px-[10%]"
     >
       {/* Part 1 navigation */}
 
@@ -81,6 +88,8 @@ const MovieDetails = () => {
           alt=""
         />
 
+      
+
         <div className="content ml-15 text-white">
           <h1 className=" text-5xl font-black text-white">
             {info.detail.name ||
@@ -91,6 +100,7 @@ const MovieDetails = () => {
               ( {info.detail.release_date.split("-")[0]})
             </span>
           </h1>
+          
           <div className="flex mt-2 text-white items-center gap-5 relative">
             <span className="absolute text-white text-md font-semibold rounded-full w-[5vh] h-[5vh] flex items-center justify-center bg-yellow-600 ">
               {Math.floor(info.detail.vote_average * 10)}
@@ -116,7 +126,9 @@ const MovieDetails = () => {
             Movie Translated
           </h1>
           <p className="text-sm mb-8">{info.translations.join(", ")}</p>
-          <Link className="mt-10 py-2 px-3 bg-[#6556cd] rounded-lg" to={`${pathname}/trailer`}>
+          <Link
+          onClick={handleOpenTrailer}
+           className="mt-10 py-2 px-3 bg-[#6556cd] rounded-lg" >
             <i class="text-xl mr-2 ri-play-fill"></i>
             Play Trailer</Link>
 
@@ -126,8 +138,7 @@ const MovieDetails = () => {
       </div>
 
       {/* Part 3 availble on platform */}
-
-      <div className="w-80% mb-10">
+      <div className="w-fit mb-10">
         {info.watchproviders && info.watchproviders.flatrate && (
           <div className="flex gap-3 items-center text-white">
             <h1>Available on platforms</h1>
@@ -169,6 +180,7 @@ const MovieDetails = () => {
           </div>
         )}
       </div>
+
 
 
       {/*Part 4 Recommendation and similar stuff */}

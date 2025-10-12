@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const HorizantalCard = ({ data }) => {
   return (
     <div className="w-full flex overflow-x-auto p-3 gap-5">
-      {data?.map((d, i) => (
+      {data.length > 0 ? data?.map((d, i) => (
         <div
           key={i}
           className="min-w-[15%] h-[40vh] bg-zinc-900 rounded-lg overflow-hidden shadow-md hover:scale-[1.03] transition-transform duration-300"
@@ -33,7 +33,7 @@ const HorizantalCard = ({ data }) => {
             </p>
           </div>
         </div>
-      ))}
+      )):<h1 className="text-3xl text-white font-black text-center mt-5">Nothing to show</h1>}
     </div>
   );
 };
