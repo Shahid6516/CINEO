@@ -11,7 +11,7 @@ const Popular = () => {
   document.title = "CINEO | POPULAR";
 
   const navigate = useNavigate()
-  const [category, setCategory] = useState("movie") // movie or tv
+  const [category, setCategory] = useState("movie") 
   const [popular, setPopular] = useState([])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
@@ -40,16 +40,19 @@ const Popular = () => {
     setPage(1)
     setPopular([])
     setHasMore(true)
+    setLoading(true)
     getPopular()
   }, [category])
 
-  return popular.length > 0 ? (
+  if (loading && popular.length === 0) return <Loading />
+
+  return (
     <div className='p-6 w-screen'>
       <div className='w-full flex items-center justify-between mb-4'>
         <h1 className='flex gap-2 text-2xl text-zinc-400 font-semibold'>
           <i
             onClick={() => navigate(-1)}
-            className="hover:text-[#6556cd] ri-arrow-left-line"
+            className="hover:text-[#6556cd] ri-arrow-left-line cursor-pointer"
           ></i> POPULAR
         </h1>
 
@@ -71,11 +74,11 @@ const Popular = () => {
           scrollableTarget="scrollableDiv"
           scrollThreshold={0.9}
         >
-          <Cards data={popular} type={category === "movie" ? "movies" : "tv"} />
+          <Cards data={popular} type={category} />
         </InfiniteScroll>
       </div>
     </div>
-  ) : <Loading />
+  )
 }
 
 export default Popular

@@ -11,7 +11,7 @@ const Movie = () => {
   document.title = "CINEO | MOVIES";
 
   const navigate = useNavigate()
-  const [category, setCategory] = useState("now_playing")
+  const [category, setCategory] = useState("now_playing")  
   const [movies, setMovies] = useState([])
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
@@ -38,16 +38,19 @@ const Movie = () => {
     setPage(1)
     setMovies([])
     setHasMore(true)
+    setLoading(true)
     getMovies()
   }, [category])
 
-  return movies.length > 0 ? (
+  if (loading && movies.length === 0) return <Loading />
+
+  return (
     <div className='p-6 w-screen'>
       <div className='w-full flex items-center justify-between mb-4'>
         <h1 className='flex gap-2 text-2xl text-zinc-400 font-semibold'>
           <i
             onClick={() => navigate(-1)}
-            className="hover:text-[#6556cd] ri-arrow-left-line"
+            className="hover:text-[#6556cd] ri-arrow-left-line cursor-pointer"
           ></i> MOVIES
         </h1>
 
@@ -69,11 +72,11 @@ const Movie = () => {
           scrollableTarget="scrollableDiv"
           scrollThreshold={0.9}
         >
-          <Cards data={movies} type="movies" />
+          <Cards data={movies} type="movie" />
         </InfiniteScroll>
       </div>
     </div>
-  ) : <Loading />
+  )
 }
 
 export default Movie
