@@ -200,7 +200,6 @@ const TvDetails = () => {
         )}
       </div>
 
-      {/* #################### */}
       <hr className="border-none h-[2px] bg-zinc-500" />
       <h1 className="text-2xl mt-3 font-bold text-white">
         Seasons
@@ -224,7 +223,6 @@ const TvDetails = () => {
       </div>
 
 
-      {/* #################### */}
       <hr className="border-none h-[2px] bg-zinc-500" />
       <h1 className="text-2xl mt-3 font-bold text-white">
         Recommendations & Similar

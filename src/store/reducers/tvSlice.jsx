@@ -18,7 +18,6 @@ export const tvSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
 export const { loadtv, removetv } = tvSlice.actions;
 
 export default tvSlice.reducer
