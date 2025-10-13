@@ -5,7 +5,7 @@ import noimage from "../../public/no-image.avif";
 const HorizantalCard = ({ data }) => {
   return (
     <div className="w-full flex overflow-x-auto p-3 gap-5">
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         data?.map((d, i) => (
           <div
             key={i}
